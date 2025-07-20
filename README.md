@@ -1,69 +1,62 @@
-# React + TypeScript + Vite
+**How to Run the application (frontend and backend)**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+_Backend (.NET Web API)_ :
 
-Currently, two official plugins are available:
+                          Navigate to backend directory:
+                            Open the terminal (cmd.exe) and give a command -    cd Prescription_Management_API
+                                                                                dotnet build
+                                                                                dotnet run
+                                                  
+                              API will run at : https://localhost:7046
+                              Swagger :         https://localhost:7046/swagger/index.html
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+_Frontend (React)_ :
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+                          Navigate to frontend directory:
+                             give a command - cd PRESCRIPTION_MANAGEMENT_APP**
+                                            Install dependencies and start:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+                                              npm install
+                                              npm run dev
+                              App will open at http://localhost:5173
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+_Assumptions/Shortcuts_ :
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+                          No authentication implemented (all routes are open)
+                          In-memory storage used instead of real database
+                          Basic error handling without detailed user feedback
+                          Development CORS policy (allow-all origins)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+_Known Limitations_    :
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+                          Data Persistence:
+                                Data only persists while server is running
+                                Resets when server restarts (unless using JSON file option)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+_Scalability_          :
+
+                          Not suitable for large number of records
+                          No pagination implemented
+
+_Validation_           :
+                          
+                          Basic validation only
+                          No duplicate prescription checks
+
+_UI_                  :
+
+                          No loading states during API calls
+                          Basic form validation only
+
+_Development Details_ :
+
+                          Time Taken: 5 hours total development
+
+_Incomplete Parts_       :
+
+                          Advanced search/filter functionality
+                          Prescription edit/delete operations
+                          Patient management interface
+                          Proper error handling UI
+                          Unit/Integration tests
